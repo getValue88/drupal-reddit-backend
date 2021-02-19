@@ -13,7 +13,7 @@ const headers = {
 };
 
 const submitArticle = async (article) => {
-  console.log("Submitting article");
+  console.log("Submitting article\n");
   axios.defaults.headers["Content-Type"] = "application/vnd.api+json";
   axios.defaults.headers["Accept"] = "application/vnd.api+json";
   console.log(article);
@@ -56,12 +56,14 @@ const submitArticle = async (article) => {
     .post(drupalUrl + "/jsonapi/node/article", body, headers)
     .then(() => {
       fs.appendFileSync("uploadedContent.txt", article.title.replace(/,/g, " ") + ",");
-      console.log(`Article uploaded succesfully! ${article.title}`);
+      console.log(`Article uploaded succesfully! ${article.title}\n`);
       return article;
     })
     .catch((e) => {
-      console.log(e);
-      console.log("Failed to post article :(");
+      console.log("Failed to post article :(\n");
+      console.log("Status: " + e.response.status);
+      console.log(e.response.data);
+      console.log("\n");
     });
 };
 

@@ -7,7 +7,7 @@ const { getImage } = require("./getImage");
 const getPost = async (req, res, next) => {
   console.log("Looking for a new post");
   try {
-    const random = Math.floor(Math.random() * subs.length);
+    const random = Math.round(Math.random() * (subs.length - 1));
     const sub = subs[random];
 
     const url = await Reddit.top(sub).then((data) => data.url + ".json");
@@ -18,7 +18,7 @@ const getPost = async (req, res, next) => {
 
         if (!alreadyUploaded.includes(data.title.replace(/,/g, " "))) {
           return data;
-        } else console.log("Duplicated Article");
+        } else console.log("Duplicated Article\n");
       }
       return null;
     });
@@ -45,7 +45,6 @@ const getPost = async (req, res, next) => {
     console.log(`Article found! ${article.title}`);
     next();
   } catch (e) {
-    console.log(e);
     getPost(req, res, next);
   }
 };

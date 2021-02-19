@@ -5,7 +5,7 @@ const auth = process.env.AUTH;
 const drupalUrl = process.env.URL;
 
 const postImage = async (binaryImg, imgName) => {
-  console.log("Triying to post image");
+  console.log("Triying to post image\n");
   try {
     axios.defaults.headers["Content-Type"] = "application/octet-stream";
     axios.defaults.headers["Accept"] = "application/vnd.api+json";
@@ -17,11 +17,11 @@ const postImage = async (binaryImg, imgName) => {
     };
 
     return await axios.post(drupalUrl + "/jsonapi/node/article/field_image", binaryImg, headers).then(({ data }) => {
-      console.log(`Image uploaded succesfully. ID: ${data.data.id}`);
+      console.log(`Image uploaded succesfully. ID: ${data.data.id}\n`);
       return data.data.id;
     });
   } catch (error) {
-    console.log("Failed to upload img :(");
+    console.log("Failed to upload img :(\n");
     return null;
   }
 };

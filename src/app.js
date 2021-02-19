@@ -7,7 +7,7 @@ require("dotenv").config({ path: "../.env" });
 const { getPost } = require("./getPosts");
 const { submitArticle } = require("./submitArticle");
 const { postImage } = require("./postImage");
-const { defaultImages } = require("./defaultImages");
+const { categories } = require("./categories");
 
 // CONFIG
 const app = express();
@@ -36,7 +36,7 @@ app.get("/", [getPost], async (req, res) => {
       const uploadedImgId = await postImage(article.img, article.imgName);
       article.img = uploadedImgId;
     } else {
-      article.img = defaultImages[article.sub];
+      article.img = categories[article.defaultImg];
     }
 
     const response = await submitArticle(article);
@@ -49,7 +49,7 @@ app.get("/", [getPost], async (req, res) => {
 // Initialize server -------------------------------------------------------------
 
 app.listen(port, () => {
-  console.log(`App listening at port: ${port}`);
+  console.log(`App listening at port: ${port}\n`);
 });
 
 // Awake dyno --------------------------------------------------------------------
@@ -57,7 +57,7 @@ const timer = port === 3001 ? 0.5 : 6;
 
 const awakeDyno = () => {
   setInterval(() => {
-    console.log("Dyno awaking :O");
+    console.log("Dyno awaking :O\n");
     const options = {
       host: "localhost",
       port: port,
