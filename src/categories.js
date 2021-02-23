@@ -34,7 +34,7 @@ module.exports.categories = {
     tags: "backend",
     defaultImg: "",
   },
-  cloud: {
+  Cloud: {
     term: "b62ed879-0c13-423a-8e79-d9daa95a07d8",
     tags: "cloud",
     defaultImg: "",
