@@ -74,7 +74,7 @@ module.exports.categories = {
     tags: "cloud",
     defaultImg: "",
   },
-  azure: {
+  AZURE: {
     term: "c05c7981-f979-4835-aa37-60d8b1151be5",
     tags: "cloud",
     defaultImg: "",

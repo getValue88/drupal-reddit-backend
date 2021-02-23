@@ -9,12 +9,11 @@ const getPost = async (req, res, next) => {
   try {
     const random = Math.round(Math.random() * (subs.length - 1));
     const sub = subs[random];
-
     const url = await Reddit.top(sub).then((data) => data.url + ".json");
     const post = await axios.get(url).then(({ data }) => {
       data = data[0].data.children[0].data;
       if (!data.url.includes("redd")) {
-        const alreadyUploaded = fs.readFileSync("uploadedContent.txt", "utf-8").split(",");
+        const alreadyUploaded = fs.readFileSync("./src/uploadedContent.txt", "utf-8").split(",");
 
         if (!alreadyUploaded.includes(data.title.replace(/,/g, " "))) {
           return data;

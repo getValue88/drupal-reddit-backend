@@ -1,6 +1,6 @@
 const axios = require("axios");
 const fs = require("fs");
-require("dotenv").config({ path: "../.env" });
+require("dotenv").config({ path: "./.env" });
 const { categories } = require("./categories");
 
 const auth = process.env.AUTH;
@@ -55,7 +55,7 @@ const submitArticle = async (article) => {
   axios
     .post(drupalUrl + "/jsonapi/node/article", body, headers)
     .then(() => {
-      fs.appendFileSync("uploadedContent.txt", article.title.replace(/,/g, " ") + ",");
+      fs.appendFileSync("./src/uploadedContent.txt", article.title.replace(/,/g, " ") + ",");
       console.log(`Article uploaded succesfully! ${article.title}\n`);
       return article;
     })
