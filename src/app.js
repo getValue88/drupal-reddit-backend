@@ -3,7 +3,7 @@ const express = require("express");
 const cors = require("cors");
 const bodyParser = require("body-parser");
 const http = require("http");
-require("dotenv").config({ path: "../.env" });
+require("dotenv").config({ path: "./.env" });
 const { getPost } = require("./getPosts");
 const { submitArticle } = require("./submitArticle");
 const { postImage } = require("./postImage");

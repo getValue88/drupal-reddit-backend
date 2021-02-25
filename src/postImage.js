@@ -1,5 +1,5 @@
 const axios = require("axios");
-require("dotenv").config({ path: "../.env" });
+require("dotenv").config({ path: "./.env" });
 
 const auth = process.env.AUTH;
 const drupalUrl = process.env.URL;
