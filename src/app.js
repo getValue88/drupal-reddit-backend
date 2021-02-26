@@ -57,7 +57,7 @@ const timer = port === 3001 ? 0.5 : 6;
 
 const awakeDyno = () => {
   setInterval(() => {
-    console.log("Dyno awaking :O\n");
+    console.log("Dyno awaking :o\n");
     const options = {
       host: "localhost",
       port: port,
